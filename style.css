@@ -1,0 +1,22 @@
+.thisBody{
+    background-image: url("background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.heading{
+    position: relative;
+    width: 100%;
+    top: 40%;
+    left: 50%;
+    margin-top: -10%;
+    margin-left: -100;
+}
+.center{
+    position: relative;
+    width: 50%;
+    top: 80%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+}
