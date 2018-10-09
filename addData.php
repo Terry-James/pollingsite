@@ -10,7 +10,7 @@ $db_pass = '';
 $db_name = 'pollvoting';
 
 $poll = $_POST['pollQ'];
-$numChoices = 1;
+$numChoices = 0;
 $pollAns1 = $_POST['choice1'];
 $pollAns2 = $_POST['choice2'];
 $pollAns3 = $_POST['choice3'];
@@ -23,16 +23,22 @@ $lastName = $_POST['lastN'];
 $userEmail = $_POST['email'];
 $userPassword = $_POST['password'];
 
-$arrChoices = array($pollAns1, $pollAns2, $pollAns3, $pollAns4, $pollAns5, $pollAns6);
+
 $db = new mysqli($db_host, $db_username, $db_pass, $db_name) or die("Can't connect to MySQL Server");
 
-for($i = 0; $i <= $arrChoices.count(); $i++ ){
-    if(isset($arrChoices[$i])){
-        $numChoices++;
-    }
-}
+
 
 if(isset($poll)){
+    $arrChoices = array($pollAns1, $pollAns2, $pollAns3, $pollAns4, $pollAns5, $pollAns6);
+    $arrlength = count($arrChoices);
+    for($i = 0; $i <= $arrlength-1; $i++ ){
+        if($arrChoices[$i] !== ""){
+            $numChoices++;
+        }
+        else{
+            $numChoices = $numChoices;
+        }
+    }
     $pollAdd = mysqli_prepare($db, "INSERT INTO polls (pollQuestion, numofChoices, pollAnswer1, pollAnswer2, pollAnswer3, pollAnswer4, pollAnswer5, pollAnswer6) VALUES (?,?,?,?,?,?,?,?)");
     mysqli_stmt_bind_param($pollAdd, "ssssssss", $poll, $numChoices, $pollAns1, $pollAns2, $pollAns3, $pollAns4, $pollAns5, $pollAns6);
     mysqli_stmt_execute($pollAdd);
