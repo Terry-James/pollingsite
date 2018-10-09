@@ -59,10 +59,10 @@ if(!isset($_SESSION['email'])){
         $db = new mysqli($db_host, $db_username, $db_pass, $db_name) or die("Can't connect to MySQL Server");
 
         if (isset($searchResult)){
-            $searching = ("SELECT pollQuestion, pollAnswer1, pollAnswer2, pollAnswer3, pollAnswer4, pollAnswer5, pollAnswer6, pollNum FROM polls WHERE pollQuestion LIKE '%$searchResult%'");
+            $searching = ("SELECT pollQuestion,numofChoices, pollAnswer1, pollAnswer2, pollAnswer3, pollAnswer4, pollAnswer5, pollAnswer6, pollNum FROM polls WHERE pollQuestion LIKE '%$searchResult%'");
             $myQuery = mysqli_query($db,$searching);
             if (mysqli_num_rows($myQuery) > 0){
-                echo "<form id='submit' method='Post' action='selectPoll.php'>\n";
+                echo "<form id='submit' method='Post' action='select.php'>\n";
                 echo "<div style = 'top: 200pt; margin:0 auto; width: 825px; background-color: lightblue'>\n";
                 echo "<table border = '1' style='border-color: white'>";
                 echo "<tr><th style ='padding: 25px; text-align: left'> Poll Question </th> 
@@ -87,13 +87,14 @@ if(!isset($_SESSION['email'])){
                 echo "</div>";
             }
         }
+
             ?>
         </div>
         </div>
         <div class="col-sm">
-            <form method="POST" action="selectPoll.php">
+            <form method="POST" action="select.php">
             Want to answer a poll? <br><input type="text" name="pollNumber" id="pollNumber" placeholder="Enter poll number " required>
-            <button type="submit" id="abutton"> Submit
+            <button type="submit" id="abutton">Submit</button>
             </form>
         </div>
     </div>
