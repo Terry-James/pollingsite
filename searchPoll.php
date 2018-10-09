@@ -31,6 +31,9 @@ if(!isset($_SESSION['email'])){
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
+                    <a class="nav-link" href="logOut.php">Log Out</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">View Stats</a>
                 </li>
                 <li class="nav-item">
@@ -87,7 +90,6 @@ if(!isset($_SESSION['email'])){
                 echo "</div>";
             }
         }
-
             ?>
         </div>
         </div>
