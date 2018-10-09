@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['email'])){
+    header("Location: index.html");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +49,7 @@ $db_username = 'root';
 $db_pass = '';
 $db_name = 'pollvoting';
 $searchResult = $_POST['pollNumber'];
+$_SESSION['numChoices'] = $searchResult;
 
 $db = new mysqli($db_host, $db_username, $db_pass, $db_name) or die("Can't connect to MySQL Server");
 
