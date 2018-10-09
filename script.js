@@ -56,31 +56,3 @@ function removeText(){
         document.getElementById('choice6').style.display = "block";
     }
 }
-
-function hideAnswers(number){
-    if(number == 1){
-        document.getElementsByName('ans2').style.display = "none";
-        document.getElementsByName('ans3').style.display = "none";
-        document.getElementsByName('ans4').style.display = "none";
-        document.getElementsByName('ans5').style.display = "none";
-        document.getElementsByName('ans6').style.display = "none";
-    }
-    else if(number == 2){
-        document.getElementsByName('ans3').style.display = "none";
-        document.getElementsByName('ans4').style.display = "none";
-        document.getElementsByName('ans5').style.display = "none";
-        document.getElementsByName('ans6').style.display = "none";
-    }
-    else if(number == 3){
-        document.getElementsByName('ans4').style.display = "none";
-        document.getElementsByName('ans5').style.display = "none";
-        document.getElementsByName('ans6').style.display = "none";
-    }
-    else if(number == 4){
-        document.getElementsByName('ans5').style.display = "none";
-        document.getElementsByName('ans6').style.display = "none";
-    }
-    else if(number == 5){
-        document.getElementsByName('ans6').style.display = "none";
-    }
-}
