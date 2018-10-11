@@ -172,7 +172,7 @@ else if($row['numofChoices'] == 6){
     $query6 = mysqli_query($db, $search6);
     $row6 = mysqli_fetch_assoc($query6);
     echo "<div style = 'top: 200pt; margin:0 auto; width: 825px; background-color: lightgreen'>\n";
-    echo "<form id='submit' method='Post' submitPoll.php'>\n";
+    echo "<form id='submit' method='Post' action= 'submitPoll.php'>\n";
     echo "<table border = '1' style='border-color: white'>";
     echo "<tr><th style ='padding: 25px; text-align: left'> Poll Question </th> 
         <th style ='padding: 15px; text-align: center'> Choice1 </th>
