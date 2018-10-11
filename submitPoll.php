@@ -26,58 +26,85 @@ $checkRows = mysqli_num_rows($checkRes);
 
 if($checkRows == 0){ // poll hasn't been answered before
     // start adding new data
-    $insertPoll = ("INSERT INTO pollsanswered(pollNum) VALUE($pollNum)");
-    $insertQuery = mysqli_query($db, $insertPoll);
+    
 
     if(isset($answer1) == true){
+        $insertPoll = ("INSERT INTO pollsanswered(pollNum) VALUE($pollNum)");
+        $insertQuery = mysqli_query($db, $insertPoll);
+
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-        echo $row['ans1chs'];
+        $ans1 = $row['ans1chs'];
 
-        // TODO change insert to UPDATE 
-        $updateValue = ("INSERT INTO pollsanswered (ans1chs) VALUES(($row['ans1chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $updateValue = ("UPDATE pollsanswered SET ans1chs = $ans1+1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
     elseif(isset($answer2) == true){
+        $insertPoll = ("INSERT INTO pollsanswered(pollNum) VALUE($pollNum)");
+        $insertQuery = mysqli_query($db, $insertPoll);
+
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-    
-        $searching = ("INSERT INTO pollsanswered (ans2chs) VALUES(($row['ans2chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $ans2 = $row['ans2chs'];
+
+        $updateValue = ("UPDATE pollsanswered SET ans2chs = $ans2 + 1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
     elseif(isset($answer3) == true){
+        $insertPoll = ("INSERT INTO pollsanswered(pollNum) VALUE($pollNum)");
+        $insertQuery = mysqli_query($db, $insertPoll);
+
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-    
-        $searching = ("INSERT INTO pollsanswered (ans3chs) VALUES(($row['ans3chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $ans3 = $row['ans3chs'];
+
+        $updateValue = ("UPDATE pollsanswered SET ans3chs = $ans3 + 1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
     elseif(isset($answer4) == true){
+        $insertPoll = ("INSERT INTO pollsanswered(pollNum) VALUE($pollNum)");
+        $insertQuery = mysqli_query($db, $insertPoll);
+
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-    
-        $searching = ("INSERT INTO pollsanswered (ans4chs) VALUES(($row['ans4chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $ans4 = $row['ans4chs'];
+
+        $updateValue = ("UPDATE pollsanswered SET ans4chs = $ans4 + 1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
     elseif(isset($answer5) == true){
+        $insertPoll = ("INSERT INTO pollsanswered(pollNum) VALUE($pollNum)");
+        $insertQuery = mysqli_query($db, $insertPoll);
+
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-    
-        $searching = ("INSERT INTO pollsanswered (ans5chs) VALUES(($row['ans5chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $ans5 = $row['ans5chs'];
+
+        $updateValue = ("UPDATE pollsanswered SET ans5chs = $ans5 + 1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
     elseif(isset($answer6) == true){
+        $insertPoll = ("INSERT INTO pollsanswered(pollNum) VALUE($pollNum)");
+        $insertQuery = mysqli_query($db, $insertPoll);
+
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-    
-        $searching = ("INSERT INTO pollsanswered (ans6chs) VALUES(($row['ans6chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $ans6 = $row['ans6chs'];
+
+        $updateValue = ("UPDATE pollsanswered SET ans6chs = $ans6 + 1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
 }
 else{ // poll has been answered before
@@ -86,52 +113,61 @@ else{ // poll has been answered before
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-    
-        $updateValue = ("INSERT INTO pollsanswered (ans1chs) VALUES(($row['ans1chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $ans1 = $row['ans1chs'];
+
+        $updateValue = ("UPDATE pollsanswered SET ans1chs = $ans1 + 1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
     elseif(isset($answer2) == true){
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-    
-        $searching = ("INSERT INTO pollsanswered (ans2chs) VALUES(($row['ans2chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $ans2 = $row['ans2chs'];
+
+        $updateValue = ("UPDATE pollsanswered SET ans2chs = $ans2 + 1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
     elseif(isset($answer3) == true){
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-    
-        $searching = ("INSERT INTO pollsanswered (ans3chs) VALUES(($row['ans3chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $ans3 = $row['ans3chs'];
+
+        $updateValue = ("UPDATE pollsanswered SET ans3chs = $ans3 + 1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
     elseif(isset($answer4) == true){
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-    
-        $searching = ("INSERT INTO pollsanswered (ans4chs) VALUES(($row['ans4chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $ans4 = $row['ans4chs'];
+
+        $updateValue = ("UPDATE pollsanswered SET ans4chs = $ans4 + 1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
     elseif(isset($answer5) == true){
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-    
-        $searching = ("INSERT INTO pollsanswered (ans5chs) VALUES(($row['ans5chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $ans5 = $row['ans5chs'];
+
+        $updateValue = ("UPDATE pollsanswered SET ans5chs = $ans5 + 1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
     elseif(isset($answer6) == true){
         $retrieve = ("SELECT * FROM pollsanswered WHERE pollNum = $pollNum");
         $sqlQuery = mysqli_query($db, $retrieve);
         $row = mysqli_fetch_assoc($sqlQuery);
-    
-        $searching = ("INSERT INTO pollsanswered (ans6chs) VALUES(($row['ans6chs'] + 1))");
-        $sqlQuery1 = mysqli_query($db, $searching);
+        $ans6 = $row['ans6chs'];
+
+        $updateValue = ("UPDATE pollsanswered SET ans4chs = $ans6 + 1 WHERE pollNum = $pollNum ");
+        $sqlQuery1 = mysqli_query($db, $updateValue);
+        header('Location: createPoll.php');
     }
 }
-
-
-
 ?>
