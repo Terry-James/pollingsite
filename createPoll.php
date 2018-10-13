@@ -13,7 +13,6 @@ if(!isset($_SESSION['email'])){
     <title>Poll</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
 </head>
@@ -32,7 +31,7 @@ if(!isset($_SESSION['email'])){
                     <a class="nav-link" href="logOut.php">Log Out</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">View Stats</a>
+                    <a class="nav-link" href="stats.php">View Stats</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="searchPoll.php" method="POST">
