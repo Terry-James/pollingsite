@@ -39,7 +39,12 @@ if(!isset($_SESSION['email'])){
                 <li class="nav-item">
                     <a class="nav-link" href="createPoll.php">Create a Poll</a>
                 </li>
+                <form class="form-inline my-2 my-lg-0" method="POST" action="select.php">
+                <input class="form-control mr-sm-2" type="text" name="pollNumber" id="pollNumber" placeholder="Enter poll number " required>
+                 <button class="btn btn-primary my-2 my-sm-0" type="submit" id="abutton">Submit</button>
+                </form>
             </ul>
+            
             <form class="form-inline my-2 my-lg-0" action="searchPoll.php" method="POST">
                 <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search for a poll" aria-label="Search">
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
@@ -65,8 +70,7 @@ if(!isset($_SESSION['email'])){
             $searching = ("SELECT pollQuestion,numofChoices, pollAnswer1, pollAnswer2, pollAnswer3, pollAnswer4, pollAnswer5, pollAnswer6, pollNum FROM polls WHERE pollQuestion LIKE '%$searchResult%'");
             $myQuery = mysqli_query($db,$searching);
             if (mysqli_num_rows($myQuery) > 0){
-                echo "<form id='submit' method='Post' action='select.php'>\n";
-                echo "<div style = 'top: 200pt; margin:0 auto; width: 825px; background-color: lightblue'>\n";
+                echo "<div style = 'top: 200pt; margin:0 auto; background-color: lightgreen'>\n";
                 echo "<table border = '1' style='border-color: white'>";
                 echo "<tr><th style ='padding: 25px; text-align: left'> Poll Question </th> 
                     <th style ='padding: 15px; text-align: center'> Choice1 </th>
@@ -94,10 +98,7 @@ if(!isset($_SESSION['email'])){
         </div>
         </div>
         <div class="col-sm">
-            <form method="POST" action="select.php">
-            Want to answer a poll? <br><input type="text" name="pollNumber" id="pollNumber" placeholder="Enter poll number " required>
-            <button type="submit" id="abutton">Submit</button>
-            </form>
+            
         </div>
     </div>
 </div>
