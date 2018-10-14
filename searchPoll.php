@@ -80,15 +80,15 @@ if(!isset($_SESSION['email'])){
                     <th style ='padding: 15px; text-align: center'> Choice5 </th>  
                     <th style ='padding: 15px; text-align: center'> Choice6 </th>    
                     <th style ='padding: 15px; text-align: center'> Poll Number </th></tr>\n";
-                while($row = mysqli_fetch_assoc($myQuery)){
-                    echo '<tr><td style ="padding: 15px; text-align: left">'.$row['pollQuestion'].'</td>';
-                            echo '<td style ="padding: 15px; text-align: center">'.$row['pollAnswer1'].'</td>';
-                            echo '<td style ="padding: 15px; text-align: center">'.$row['pollAnswer2'].'</td>';
-                            echo '<td style ="padding: 15px; text-align: center">'.$row['pollAnswer3'].'</td>';
-                            echo '<td style ="padding: 15px; text-align: center">'.$row['pollAnswer4'].'</td>';
-                            echo '<td style ="padding: 15px; text-align: center">'.$row['pollAnswer5'].'</td>';
-                            echo '<td style ="padding: 15px; text-align: center">'.$row['pollAnswer6'].'</td>';
-                            echo '<td style ="padding: 15px; text-align: center">'.$row['pollNum'].'</td></tr>';
+                while($rows = mysqli_fetch_assoc($myQuery)){
+                    echo '<tr><td style ="padding: 15px; text-align: left">'.$rows['pollQuestion'].'</td>';
+                            echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer1'].'</td>';
+                            echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer2'].'</td>';
+                            echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer3'].'</td>';
+                            echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer4'].'</td>';
+                            echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer5'].'</td>';
+                            echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer6'].'</td>';
+                            echo '<td style ="padding: 15px; text-align: center">'.$rows['pollNum'].'</td></tr>';
                 }
                 echo "</table>\n";
                 echo "</div>";
