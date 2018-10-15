@@ -1,11 +1,13 @@
 <?php
+// Terry James CS396 Project2
+
+// sets sessions so this page can not be viewed without a valid email
 session_start();
 if(!isset($_SESSION['email'])){
-    header("Location: index.html");
+    header("Location: index.html"); // return to login if email is not set
 }
 ?>
 
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -44,6 +46,7 @@ if(!isset($_SESSION['email'])){
 </nav>
 
 <?php
+// variables
 $db_host = 'localhost';
 $db_username = 'root';
 $db_pass = '';
@@ -51,13 +54,15 @@ $db_name = 'pollvoting';
 $searchResult = $_POST['pollNumber'];
 $_SESSION['numChoices'] = $searchResult;
 
+// connect to the database
 $db = new mysqli($db_host, $db_username, $db_pass, $db_name) or die("Can't connect to MySQL Server");
 
-
+// query to get the number of choices for the poll selected
 $getNum = ("SELECT numofChoices FROM polls WHERE pollNum = $searchResult ");
 $queryRes = mysqli_query($db, $getNum);
 $row = mysqli_fetch_assoc($queryRes);
 
+// if elses to display the correct amount of choices with the poll question
 if($row['numofChoices'] == 1){
     $search1 = ("SELECT pollQuestion, pollAnswer1 FROM polls WHERE pollNum = $searchResult");
     $query1 = mysqli_query($db, $search1);

@@ -1,9 +1,13 @@
 <?php
+// Terry James CS396 Project2
+
+// sets sessions so this page can not be viewed without a valid email
 session_start();
 if(!isset($_SESSION['email'])){
-    header("Location: index.html");
+    header("Location: index.html"); // return to login if email is not set
 }
 
+// variables
 $db_host = 'localhost';
 $db_username = 'root';
 $db_pass = '';
@@ -16,18 +20,16 @@ $answer4 = $_POST['ans4'];
 $answer5 = $_POST['ans5'];
 $answer6 = $_POST['ans6'];
 
-
-
+// connect to the database
 $db = new mysqli($db_host, $db_username, $db_pass, $db_name) or die("Can't connect to MySQL Server");
 
+// checks if the poll has been answered before or not
 $checking = ("SELECT pollNum FROM pollsanswered WHERE pollNum = $pollNum");
 $checkRes = mysqli_query($db, $checking);
 $checkRows = mysqli_num_rows($checkRes);
 
 if($checkRows == 0){ // poll hasn't been answered before
     // start adding new data
-    
-
     if(isset($answer1) == true){
         $insertPoll = ("INSERT INTO pollsanswered(pollNum) VALUE($pollNum)");
         $insertQuery = mysqli_query($db, $insertPoll);

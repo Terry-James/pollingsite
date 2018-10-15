@@ -1,3 +1,13 @@
+<?php
+// Terry James CS396 Project2
+
+// sets sessions so this page can not be viewed without a valid email
+session_start();
+if(!isset($_SESSION['email'])){
+    header("Location: index.html"); // return to login if email is not set
+}
+?>
+
 <html>
 <head>
     <meta charset="utf-8" />
@@ -40,6 +50,7 @@
 <div class="container">
 	<div class="row">
 	<?php
+	// variables
 	$db_host = 'localhost';
 	$db_username = 'root';
 	$db_pass = '';
@@ -47,12 +58,14 @@
 
 	$pollNumber = $_POST['search'];
 
+	// connect to the database
 	$db = new mysqli($db_host, $db_username, $db_pass, $db_name) or die("Can't connect to MySQL Server");
 
+	// retrieve the information of the poll selected including number of times its choices where answered
 	$retrieve = ("SELECT * FROM polls, pollsanswered WHERE polls.pollNum = $pollNumber and pollsanswered.pollNum = $pollNumber");
 	$myQuery = mysqli_query($db, $retrieve);
 
-	if (mysqli_num_rows($myQuery) > 0){
+	if (mysqli_num_rows($myQuery) > 0){ // check if query is empty
 		echo "<div style = 'top: 200pt; margin:0 auto; background-color: lightgreen'>\n";
 		echo "<table border = '1' style='border-color: white'>";
 		echo "<tr><th style ='padding: 25px; text-align: left'> Poll Question </th>   

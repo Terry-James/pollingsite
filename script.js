@@ -1,10 +1,6 @@
-/* function removeText(){
-    var result = document.getElementById('thisForm');
-    var res = document.getElementById('numOf');
+// Terry James CS396 Project2
 
-    result.removeChild(res);
-} */
-
+// function used to hide choice boxes
 function hideSomething(){
     document.getElementById('pollButton').style.display = "none";
     document.getElementById('choice1').style.display = "none";
@@ -15,6 +11,8 @@ function hideSomething(){
     document.getElementById('choice6').style.display = "none";
 }
 
+/* removes the button for choice number and shows the poll submit button 
+along with the correct number of choice boxes.*/
 function removeText(){
     var numChoice = document.getElementById('numOf').value;
     

@@ -1,11 +1,13 @@
 <?php
+// Terry James CS396 Project2
+
+// sets sessions so this page can not be viewed without a valid email
 session_start();
 if(!isset($_SESSION['email'])){
-    header("Location: index.html");
+    header("Location: index.html"); // return to login if email is not set
 }
 ?>
 
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -58,18 +60,22 @@ if(!isset($_SESSION['email'])){
         <div class="col-sm">
         <div class="row">    
         <?php
+        // variables 
         $db_host = 'localhost';
         $db_username = 'root';
         $db_pass = '';
         $db_name = 'pollvoting';
         $searchResult = $_POST['search'];
 
+        // connect to a database
         $db = new mysqli($db_host, $db_username, $db_pass, $db_name) or die("Can't connect to MySQL Server");
 
+        // check if something was entered into search bar
         if (isset($searchResult)){
+            // Database query
             $searching = ("SELECT pollQuestion,numofChoices, pollAnswer1, pollAnswer2, pollAnswer3, pollAnswer4, pollAnswer5, pollAnswer6, pollNum FROM polls WHERE pollQuestion LIKE '%$searchResult%'");
             $myQuery = mysqli_query($db,$searching);
-            if (mysqli_num_rows($myQuery) > 0){
+            if (mysqli_num_rows($myQuery) > 0){ // make sure search result isn't empty
                 echo "<div style = 'top: 200pt; margin:0 auto; background-color: lightgreen'>\n";
                 echo "<table border = '1' style='border-color: white'>";
                 echo "<tr><th style ='padding: 25px; text-align: left'> Poll Question </th> 
@@ -80,7 +86,7 @@ if(!isset($_SESSION['email'])){
                     <th style ='padding: 15px; text-align: center'> Choice5 </th>  
                     <th style ='padding: 15px; text-align: center'> Choice6 </th>    
                     <th style ='padding: 15px; text-align: center'> Poll Number </th></tr>\n";
-                while($rows = mysqli_fetch_assoc($myQuery)){
+                while($rows = mysqli_fetch_assoc($myQuery)){ // as long as a row exist print results from database search
                     echo '<tr><td style ="padding: 15px; text-align: left">'.$rows['pollQuestion'].'</td>';
                             echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer1'].'</td>';
                             echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer2'].'</td>';
@@ -97,9 +103,7 @@ if(!isset($_SESSION['email'])){
             ?>
         </div>
         </div>
-        <div class="col-sm">
-            
-        </div>
+        <div class="col-sm"></div>
     </div>
 </div>
 </body>

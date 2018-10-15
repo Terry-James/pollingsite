@@ -1,9 +1,11 @@
+/* adds background image to this class */
 .thisBody{
     background-image: url("background.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
+/*not used*/
 .heading{
     position: relative;
     width: 100%;
@@ -12,6 +14,7 @@
     margin-top: -10%;
     margin-left: -100;
 }
+/* not used*/
 .center{
     position: relative;
     width: 50%;
