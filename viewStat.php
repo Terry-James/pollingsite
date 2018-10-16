@@ -17,10 +17,7 @@ if(!isset($_SESSION['email'])){
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
-    <script src="script.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    
 </head>
 <body class="thisBody">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -64,6 +61,7 @@ if(!isset($_SESSION['email'])){
 	// retrieve the information of the poll selected including number of times its choices where answered
 	$retrieve = ("SELECT * FROM polls, pollsanswered WHERE polls.pollNum = $pollNumber and pollsanswered.pollNum = $pollNumber");
 	$myQuery = mysqli_query($db, $retrieve);
+	$rows = mysqli_fetch_assoc($myQuery);
 
 	if (mysqli_num_rows($myQuery) > 0){ // check if query is empty
 		echo "<div style = 'top: 200pt; margin:0 auto; background-color: lightgreen'>\n";
@@ -75,39 +73,130 @@ if(!isset($_SESSION['email'])){
 			<th style ='padding: 15px; text-align: center'> Answer4 </th>
 			<th style ='padding: 15px; text-align: center'> Answer5 </th>
 			<th style ='padding: 15px; text-align: center'> Answer6 </th></tr>\n";
-		while($rows = mysqli_fetch_assoc($myQuery)){
-			echo '<tr><td style ="padding: 15px; text-align: left">'.$rows['pollQuestion'].'</td>';
-			echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer1'].'<br>'.$rows['ans1chs'].'</td>';
-			echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer2'].'<br>'.$rows['ans2chs'].'</td>';
-			echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer3'].'<br>'.$rows['ans3chs'].'</td>';
-			echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer4'].'<br>'.$rows['ans4chs'].'</td>';
-			echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer5'].'<br>'.$rows['ans5chs'].'</td>';
-			echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer6'].'<br>'.$rows['ans6chs'].'</td></tr>';
-		}
+		echo '<tr><td style ="padding: 15px; text-align: left">'.$rows['pollQuestion'].'</td>';
+		echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer1'].'<br>'.$rows['ans1chs'].'</td>';
+		echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer2'].'<br>'.$rows['ans2chs'].'</td>';
+		echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer3'].'<br>'.$rows['ans3chs'].'</td>';
+		echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer4'].'<br>'.$rows['ans4chs'].'</td>';
+		echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer5'].'<br>'.$rows['ans5chs'].'</td>';
+		echo '<td style ="padding: 15px; text-align: center">'.$rows['pollAnswer6'].'<br>'.$rows['ans6chs'].'</td></tr>';
 		echo "</table>\n";
 		echo "</div>";
 	}
 	?>
 	</div>
-
-	<div class="row">
-		<div class="col"></div>
+	<div class="mx-auto" style="width: 450px">
+	<div class="row mt-3">
 		<div class="col">
-		<canvas id="aCanvas" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+		<canvas id="aCanvas" width="500" height="250" style="border:1px solid #d3d3d3;"></canvas>
 		<script>
+			var counter1 = "<?php echo $rows['ans1chs']?>";
+			var number1 = parseInt(counter1, 10);
+
+			var counter2 = "<?php echo $rows['ans2chs']?>";
+			var number2 = parseInt(counter2, 10);
+
+			var counter3 = "<?php echo $rows['ans3chs']?>";
+			var number3 = parseInt(counter3, 10);
+
+			var counter4 = "<?php echo $rows['ans4chs']?>";
+			var number4 = parseInt(counter4, 10);
+
+			var counter5 = "<?php echo $rows['ans5chs']?>";
+			var number5 = parseInt(counter5, 10);
+
+			var counter6 = "<?php echo $rows['ans6chs']?>";
+			var number6 = parseInt(counter6, 10);
+
 			var c = document.getElementById("aCanvas");
 			var ctx = c.getContext("2d");
-			ctx.moveTo(50,0);
-			ctx.lineTo(50,500);
+
+			ctx.font = "20px Arial";
+			ctx.fillText("Number of times each answer was chosen", 80, 20);
+
+			ctx.moveTo(0,200);
+			ctx.lineTo(500,200);
 			ctx.stroke();
 
-			ctx.moveTo(0,450);
-			ctx.lineTo(500,450);
+			ctx.font = "10px Arial";
+			ctx.fillText("Answer1", 55, 215);
+
+			ctx.beginPath();
+			ctx.rect(50,200,50, -(number1));
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'black';
+			ctx.stroke();
+
+			ctx.font = "10px Arial";
+			ctx.fillStyle = "black";
+			ctx.fillText("Answer2", 130, 215);
+
+			ctx.beginPath();
+			ctx.rect(125,200,50, -(number2));
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'black';
+			ctx.stroke();
+
+			ctx.font = "10px Arial";
+			ctx.fillStyle = "black";
+			ctx.fillText("Answer3", 205, 215);
+
+			ctx.beginPath();
+			ctx.rect(200,200,50, -(number3));
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'black';
+			ctx.stroke();
+
+			ctx.font = "10px Arial";
+			ctx.fillStyle = "black";
+			ctx.fillText("Answer4", 280, 215);
+
+			ctx.beginPath();
+			ctx.rect(275,200,50, -(number4));
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'black';
+			ctx.stroke();
+
+			ctx.font = "10px Arial";
+			ctx.fillStyle = "black";
+			ctx.fillText("Answer5", 355, 215);
+
+			ctx.beginPath();
+			ctx.rect(350,200,50, -(number5));
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'black';
+			ctx.stroke();
+
+			ctx.font = "10px Arial";
+			ctx.fillStyle = "black";
+			ctx.fillText("Answer6", 430, 215);
+
+			ctx.beginPath();
+			ctx.rect(425,200,50, -(number6));
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'black';
 			ctx.stroke();
 		</script>
 		</div>
 		<div class="col"></div>
 	</div>
 </div>
+</div>
 </body>
+	<script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 </html>

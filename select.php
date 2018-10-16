@@ -31,7 +31,7 @@ if(!isset($_SESSION['email'])){
                     <a class="nav-link" href="logOut.php">Log Out</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">View Stats</a>
+                    <a class="nav-link" href="stats.php">View Stats</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="createPoll.php">Create a Poll</a>

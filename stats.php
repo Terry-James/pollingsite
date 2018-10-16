@@ -18,7 +18,7 @@ if(!isset($_SESSION['email'])){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body class="thisBody">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@ if(!isset($_SESSION['email'])){
         </div>
     </nav>
 </nav>
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
         <?php
         // variables
