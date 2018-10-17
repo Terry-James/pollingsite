@@ -26,7 +26,7 @@ if(!isset($_SESSION['email'])){
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        <!-- used for resizing the navbar on smaller screens-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -36,6 +36,7 @@ if(!isset($_SESSION['email'])){
                     <a class="nav-link" href="stats.php">View Stats</a>
                 </li>
             </ul>
+            <!-- form for searching for a poll-->
             <form class="form-inline my-2 my-lg-0" action="searchPoll.php" method="POST">
                 <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search for a poll"
                     aria-label="Search">
@@ -53,6 +54,7 @@ if(!isset($_SESSION['email'])){
                     <h2> Create a Poll</h2>
                 </div>
                 <div class="row" >
+                    <!-- form for creating the poll-->
                     <form action="addData.php" method="POST">
                         <input type="text" class="my-2" name="pollQ" id="poll" placeholder="Enter a poll question"
                             required>
@@ -64,6 +66,7 @@ if(!isset($_SESSION['email'])){
                         <input type="text" class="my-2" name="choice6" id="choice6" placeholder="Enter choices">
                         <button type="submit" id="pollButton"> Submit Poll</button>
                     </form>
+                    <!-- form for selecting the number of choices for the question-->
                     <form>
                         <input type="text" id="numOf" placeholder="Enter number of answers" required>
                         <button type="button" id="abutton" onclick="removeText()"> Submit </button>

@@ -20,6 +20,7 @@ if(!isset($_SESSION['email'])){
     
 </head>
 <body class="thisBody">
+	<!--another nav bar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -35,7 +36,8 @@ if(!isset($_SESSION['email'])){
                 <li class="nav-item">
                     <a class="nav-link" href="createPoll.php">Create a Poll</a>
                 </li>
-            </ul>
+			</ul>
+			<!--form for searching for polls created-->
             <form class="form-inline my-2 my-lg-0" action="searchPoll.php" method="POST">
                 <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search for a poll" aria-label="Search">
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
@@ -62,7 +64,7 @@ if(!isset($_SESSION['email'])){
 	$retrieve = ("SELECT * FROM polls, pollsanswered WHERE polls.pollNum = $pollNumber and pollsanswered.pollNum = $pollNumber");
 	$myQuery = mysqli_query($db, $retrieve);
 	$rows = mysqli_fetch_assoc($myQuery);
-
+	// displays results in a table
 	if (mysqli_num_rows($myQuery) > 0){ // check if query is empty
 		echo "<div style = 'top: 200pt; margin:0 auto; background-color: lightgreen'>\n";
 		echo "<table border = '1' style='border-color: white'>";
@@ -88,8 +90,10 @@ if(!isset($_SESSION['email'])){
 	<div class="mx-auto" style="width: 450px">
 	<div class="row mt-3">
 		<div class="col">
+			<!--creates a canvas to display the graph-->
 		<canvas id="aCanvas" width="500" height="250" style="border:1px solid #d3d3d3;"></canvas>
 		<script>
+			// variables to hold the php variable information then convert to an integer
 			var counter1 = "<?php echo $rows['ans1chs']?>";
 			var number1 = parseInt(counter1, 10);
 
@@ -108,19 +112,20 @@ if(!isset($_SESSION['email'])){
 			var counter6 = "<?php echo $rows['ans6chs']?>";
 			var number6 = parseInt(counter6, 10);
 
+			// retrieve the canvas and the context which is in 2d
 			var c = document.getElementById("aCanvas");
 			var ctx = c.getContext("2d");
-
+			// create a header
 			ctx.font = "20px Arial";
 			ctx.fillText("Number of times each answer was chosen", 80, 20);
-
+			// draw bottom line
 			ctx.moveTo(0,200);
 			ctx.lineTo(500,200);
 			ctx.stroke();
-
+			// Each like this is the title for each bar
 			ctx.font = "10px Arial";
 			ctx.fillText("Answer1", 55, 215);
-
+			// Each like this creates the bar for each answer
 			ctx.beginPath();
 			ctx.rect(50,200,50, -(number1));
 			ctx.fillStyle = "green";

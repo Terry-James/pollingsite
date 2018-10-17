@@ -6,12 +6,13 @@ session_start();
 if(!isset($_SESSION['email'])){
     header("Location: index.html"); // return to login if email is not set
 }
-// variables
+// variables for connecting to database
 $db_host = 'localhost';
 $db_username = 'root';
 $db_pass = '';
 $db_name = 'pollvoting';
 
+// variables
 $poll = $_POST['pollQ'];
 $pollAns1 = $_POST['choice1'];
 $pollAns2 = $_POST['choice2'];
@@ -25,7 +26,7 @@ $lastName = $_POST['lastN'];
 $userEmail = $_POST['email'];
 $userPassword = $_POST['password'];
 
-$numChoices = 0;
+$numChoices = 0; // keeps track of number of choices for current poll question
 
 // connect to the database or display message if can not connect
 $db = new mysqli($db_host, $db_username, $db_pass, $db_name) or die("Can't connect to MySQL Server");

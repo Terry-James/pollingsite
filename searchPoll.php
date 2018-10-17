@@ -41,12 +41,13 @@ if(!isset($_SESSION['email'])){
                 <li class="nav-item">
                     <a class="nav-link" href="createPoll.php">Create a Poll</a>
                 </li>
+                <!--form for selecting a poll to vote on -->
                 <form class="form-inline my-2 my-lg-0" method="POST" action="select.php">
                 <input class="form-control mr-sm-2" type="text" name="pollNumber" id="pollNumber" placeholder="Enter poll number " required>
                  <button class="btn btn-primary my-2 my-sm-0" type="submit" id="abutton">Submit</button>
                 </form>
             </ul>
-            
+            <!--search bar for searching polls that have been created-->
             <form class="form-inline my-2 my-lg-0" action="searchPoll.php" method="POST">
                 <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search for a poll" aria-label="Search">
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>

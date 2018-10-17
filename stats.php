@@ -34,6 +34,7 @@ if(!isset($_SESSION['email'])){
                     <a class="nav-link" href="createPoll.php">Create a Poll</a>
                 </li>
             </ul>   
+            <!--look up the stats of the poll number entered-->
             <form class="form-inline my-2 my-lg-0" action="viewStat.php" method="POST">
                 <input class="form-control mr-sm-2" name="search" type="text" placeholder="Enter the poll number" aria-label="Search">
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
@@ -57,7 +58,7 @@ if(!isset($_SESSION['email'])){
         $lookingUP = ("SELECT pollQuestion, pollNum FROM polls");
         $querying = mysqli_query($db,$lookingUP);
 
-
+        // check if the row is not empty then display the info attacted to the poll number entered
         if (mysqli_num_rows($querying) > 0){ // check to make sure query is not empty
             echo "<div style = 'top: 200pt; margin:0 auto; background-color: lightgreen'>\n";
             echo "<table border = '1' style='border-color: white'>";

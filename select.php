@@ -18,6 +18,7 @@ if(!isset($_SESSION['email'])){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body class="thisBody">
+    <!--just another navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -37,6 +38,7 @@ if(!isset($_SESSION['email'])){
                     <a class="nav-link" href="createPoll.php">Create a Poll</a>
                 </li>
             </ul>
+            <!--another search bar for looking up polls-->
             <form class="form-inline my-2 my-lg-0" action="searchPoll.php" method="POST">
                 <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search for a poll" aria-label="Search">
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
