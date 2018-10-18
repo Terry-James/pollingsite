@@ -112,6 +112,14 @@ if(!isset($_SESSION['email'])){
 			var counter6 = "<?php echo $rows['ans6chs']?>";
 			var number6 = parseInt(counter6, 10);
 
+			var total = (number1 + number2 + number3 + number4 + number5 + number6);
+			var percent1 = Math.round((number1/total)*100);
+			var percent2 = Math.round((number2/total)*100);
+			var percent3 = Math.round((number3/total)*100);
+			var percent4 = Math.round((number4/total)*100);
+			var percent5 = Math.round((number5/total)*100);
+			var percent6 = Math.round((number6/total)*100);
+
 			// retrieve the canvas and the context which is in 2d
 			var c = document.getElementById("aCanvas");
 			var ctx = c.getContext("2d");
@@ -122,72 +130,65 @@ if(!isset($_SESSION['email'])){
 			ctx.moveTo(0,200);
 			ctx.lineTo(500,200);
 			ctx.stroke();
-			// Each like this is the title for each bar
+			// Each is the title for each bar
 			ctx.font = "10px Arial";
 			ctx.fillText("Answer1", 55, 215);
-			// Each like this creates the bar for each answer
-			ctx.beginPath();
-			ctx.rect(50,200,50, -(number1));
-			ctx.fillStyle = "green";
-			ctx.fill();
-			ctx.lineWidth = 2;
-			ctx.strokeStyle = 'black';
-			ctx.stroke();
-
-			ctx.font = "10px Arial";
-			ctx.fillStyle = "black";
 			ctx.fillText("Answer2", 130, 215);
-
-			ctx.beginPath();
-			ctx.rect(125,200,50, -(number2));
-			ctx.fillStyle = "green";
-			ctx.fill();
-			ctx.lineWidth = 2;
-			ctx.strokeStyle = 'black';
-			ctx.stroke();
-
-			ctx.font = "10px Arial";
-			ctx.fillStyle = "black";
 			ctx.fillText("Answer3", 205, 215);
-
-			ctx.beginPath();
-			ctx.rect(200,200,50, -(number3));
-			ctx.fillStyle = "green";
-			ctx.fill();
-			ctx.lineWidth = 2;
-			ctx.strokeStyle = 'black';
-			ctx.stroke();
-
-			ctx.font = "10px Arial";
-			ctx.fillStyle = "black";
 			ctx.fillText("Answer4", 280, 215);
-
-			ctx.beginPath();
-			ctx.rect(275,200,50, -(number4));
-			ctx.fillStyle = "green";
-			ctx.fill();
-			ctx.lineWidth = 2;
-			ctx.strokeStyle = 'black';
-			ctx.stroke();
-
-			ctx.font = "10px Arial";
-			ctx.fillStyle = "black";
 			ctx.fillText("Answer5", 355, 215);
-
-			ctx.beginPath();
-			ctx.rect(350,200,50, -(number5));
-			ctx.fillStyle = "green";
-			ctx.fill();
-			ctx.lineWidth = 2;
-			ctx.strokeStyle = 'black';
-			ctx.stroke();
-
-			ctx.font = "10px Arial";
-			ctx.fillStyle = "black";
 			ctx.fillText("Answer6", 430, 215);
 
+			ctx.fillText(percent1 +"%", 65, 230);
+			ctx.fillText(percent2 +"%", 140, 230);
+			ctx.fillText(percent3 +"%", 215, 230);
+			ctx.fillText(percent4 +"%", 290, 230);
+			ctx.fillText(percent5 +"%", 365, 230);
+			ctx.fillText(percent5 +"%", 440, 230);
+
+			// Each like this creates the bar for each answer
 			ctx.beginPath();
-			ctx.rect(425,200,50, -(number6));
+			ctx.rect(50,200,50, -(percent1));
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'black';
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.rect(125,200,50, -(percent2));
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'black';
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.rect(200,200,50, -(percent3));
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'black';
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.rect(275,200,50, -(percent4));
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'black';
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.rect(350,200,50, -(percent5));
+			ctx.fillStyle = "green";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = 'black';
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.rect(425,200,50, -(percent6));
 			ctx.fillStyle = "green";
 			ctx.fill();
 			ctx.lineWidth = 2;
